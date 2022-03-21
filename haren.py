@@ -49,8 +49,9 @@ class Astralharen:
             time.sleep(0.1)
             
         print_state(self.holes, you, hare)
-        print('You: *, Hare: &, Found: !'.center(len(self.holes)))
-        print(f'Found in {steps} steps.'.center(len(self.holes)))
+        width = len(self.holes) + 2
+        print('You: *, Hare: &, Found: !'.center(width))
+        print(f'Found in {steps} steps.'.center(width))
 
 if __name__ == '__main__':
     Astralharen(50, 1)()
