@@ -61,4 +61,4 @@ class Astralharen:
         print(f'Found in {steps} steps.')
 
 if __name__ == '__main__':
-    Astralharen(50, 3)()
+    Astralharen(50, 1)()
