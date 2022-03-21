@@ -30,7 +30,7 @@ class Astralharen:
 
     def step(self, you):
         you += self.stepsize
-        if you >= self.holes[-1]:
+        if you > self.holes[-1]:
             you = self.holes[self.next_start]
             self.next_start = 0
         return you
@@ -50,7 +50,7 @@ class Astralharen:
             
         print_state(self.holes, you, hare)
         print('You: *, Hare: &, Found: !'.center(len(self.holes)))
-        print(f'Found in {steps} steps.')
+        print(f'Found in {steps} steps.'.center(len(self.holes)))
 
 if __name__ == '__main__':
-    Astralharen(50, 2)()
+    Astralharen(50, 1)()
