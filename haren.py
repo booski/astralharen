@@ -52,6 +52,7 @@ class Astralharen:
         width = len(self.holes) + 2
         print('You: *, Hare: &, Found: !'.center(width))
         print(f'Found in {steps} steps.'.center(width))
+        return steps
 
 if __name__ == '__main__':
     Astralharen(50, 1)()
