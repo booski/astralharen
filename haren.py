@@ -14,9 +14,9 @@ def print_state(holes, you, hare):
     print(']')
 
 class Astralharen:
-    def __init__(self, holes):
+    def __init__(self, holes, step):
         self.holes = range(holes)
-        self.mystep = 1
+        self.stepsize = step
         self.turning = False
         self.steps = 0
     
@@ -32,14 +32,14 @@ class Astralharen:
         if self.turning:
             self.turning = False
             return you
-        you += self.mystep
+        you += self.stepsize
         if you >= self.holes[-1]:
             you = self.holes[-1]
-            self.mystep = -self.mystep
+            self.stepsize = -self.stepsize
             self.turning = True
         if you <= self.holes[0]:
             you = self.holes[0]
-            self.mystep = -self.mystep
+            self.stepsize = -self.stepsize
             self.turning = True
         return you
         
@@ -48,18 +48,17 @@ class Astralharen:
         you = 0
         hare = random.choice(self.holes)
         
-        print('You: *    Hare: &'.center(len(self.holes)))
-        print_state(self.holes, you, hare)
-        input('Press enter to start searching')
         while you != hare:
             steps += 1
             print_state(self.holes, you, hare)
 
             hare = self.jump(hare)
             you = self.step(you)
-            time.sleep(0.2)
+            time.sleep(0.1)
             
         print_state(self.holes, you, hare)
+        print('You: *, Hare: &, Found: !'.center(len(self.holes)))
         print(f'Found in {steps} steps.')
 
-Astralharen(50)()
+if __name__ == '__main__':
+    Astralharen(50, 3)()
