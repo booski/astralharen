@@ -17,8 +17,8 @@ class Astralharen:
     def __init__(self, holes, step):
         self.holes = range(holes)
         self.stepsize = step
-        self.turning = False
         self.steps = 0
+        self.next_start = 1
     
     def jump(self, hare):
         if hare == self.holes[-1]:
@@ -29,18 +29,10 @@ class Astralharen:
                               hare + 1])
 
     def step(self, you):
-        if self.turning:
-            self.turning = False
-            return you
         you += self.stepsize
         if you >= self.holes[-1]:
-            you = self.holes[-1]
-            self.stepsize = -self.stepsize
-            self.turning = True
-        if you <= self.holes[0]:
-            you = self.holes[0]
-            self.stepsize = -self.stepsize
-            self.turning = True
+            you = self.holes[self.next_start]
+            self.next_start = 0
         return you
         
     def __call__(self):
@@ -61,4 +53,4 @@ class Astralharen:
         print(f'Found in {steps} steps.')
 
 if __name__ == '__main__':
-    Astralharen(50, 1)()
+    Astralharen(50, 2)()
